@@ -2,11 +2,11 @@ plot4 <- function() {
   file<-'household_power_consumption.txt'
   dataheader <- read.table(file, nrows = 2, header =TRUE, sep =';')
   #read only the relevant values
-  #first <- grep("1/2/2007",readLines(file))[1]
-  #last <- grep("3/2/2007",readLines(file))[1]
-  #data<-read.table(file, skip = first-1, nrows = last-first, header =FALSE, sep =';')
+  first <- grep("1/2/2007",readLines(file))[1]
+  last <- grep("3/2/2007",readLines(file))[1]
+  data<-read.table(file, skip = first-1, nrows = last-first, header =FALSE, sep =';')
   
-  data<-read.table(file, skip = 66637 , nrows = 2880, header =FALSE, sep =';')
+  #data<-read.table(file, skip = 66637 , nrows = 2880, header =FALSE, sep =';')
   names(data) <- names(dataheader)
   
   dateTime   <- as.POSIXlt(paste(as.Date(data$Date, format="%d/%m/%Y"), data$Time, sep=" "))
